@@ -67,3 +67,7 @@ CREATE TABLE LineItem (
     CONSTRAINT FK_LineItemRequest FOREIGN KEY (RequestID) REFERENCES Request(RequestID) ON DELETE CASCADE,
     CONSTRAINT FK_LineItemProduct FOREIGN KEY (ProductID) REFERENCES Product(ProductID) ON DELETE CASCADE
 );
+
+DROP USER IF EXISTS prs_user@localhost;
+CREATE USER prs_user@localhost IDENTIFIED BY 'sesame';
+GRANT SELECT, INSERT, DELETE, UPDATE ON prs.* TO prs_user@localhost;
